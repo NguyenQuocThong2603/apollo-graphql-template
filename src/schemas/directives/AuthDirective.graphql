@@ -1,0 +1,5 @@
+directive @auth(roles: [Role] = [ADMIN]) on OBJECT | FIELD_DEFINITION
+
+enum Role {
+  ADMIN
+}

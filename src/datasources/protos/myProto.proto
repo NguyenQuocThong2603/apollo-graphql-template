@@ -1,0 +1,16 @@
+syntax = "proto3";
+package myPackage;
+
+service MyService {
+  rpc MyMethod (MyMessage) returns (GeneralResponse) {};
+}
+
+message MyMessage {
+}
+
+message GeneralResponse {
+  bool is_success = 1;
+  string error = 2;
+}
+
+
