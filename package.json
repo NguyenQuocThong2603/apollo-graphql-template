@@ -1,0 +1,41 @@
+{
+  "name": "apollo-graphql-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test nodemon --ignore 'globalConfig.json' --exec --runInBand --detectOpenHandle 'jest'",
+    "test:m1": "MONGOMS_ARCH=x64 NODE_ENV=test nodemon --ignore 'globalConfig.json' --exec  --runInBand --detectOpenHandle 'jest'",
+    "coverage": "NODE_ENV=test jest --coverage --maxWorkers=60%",
+    "coverage:m1": "MONGOMS_ARCH=x64 NODE_ENV=test jest --coverage --maxWorkers=50%",
+    "start-local": "NODE_ENV=test PORT=4001 TOKEN_SECRET=secret REDIS_URL=localhost COMMON_DB_CONNECTION_STRING=mongodb://localhost/common_test DB_CONNECTION_STRING='mongodb://localhost/octomed-diseasemgmt_test' nodemon src",
+    "start": "NODE_ENV=dev nodemon app",
+    "start-with-env-file": "export $(grep -v '^#' .env | xargs) && nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NguyenQuocThong2603/apollo-graphql-template.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NguyenQuocThong2603/apollo-graphql-template/issues"
+  },
+  "homepage": "https://github.com/NguyenQuocThong2603/apollo-graphql-template#readme",
+  "dependencies": {
+    "@graphql-tools/utils": "^10.1.2",
+    "apollo-server": "^3.13.0",
+    "apollo-server-express": "^3.13.0",
+    "dataloader": "^2.2.2",
+    "express": "^4.19.1",
+    "graphql": "^16.8.1",
+    "graphql-fields": "^2.0.3",
+    "graphql-fields-projection": "^1.1.0",
+    "graphql-tools": "^9.0.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^8.2.3",
+    "utf8": "^3.0.0",
+    "winston": "^3.13.0"
+  }
+}
