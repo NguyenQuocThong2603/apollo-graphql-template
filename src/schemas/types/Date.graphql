@@ -1,0 +1,5 @@
+scalar Date
+scalar DateTime
+scalar Epoch
+# scalar ValidateString #disable on prod
+# scalar ValidateNumber

@@ -5,5 +5,5 @@ async function myMutation(_, args, context, info) {
 }
 
 module.exports = {
-  myMutation,
+  MyMutation: myMutation,
 };

@@ -1,8 +1,6 @@
 module.exports = {
   database: process.env.DB_CONNECTION_STRING,
   mongoOptions: {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
     maxPoolSize: 10,
   },
   // redis

@@ -1,7 +1,9 @@
-const { makeExecutableSchema } = require('graphql-tools');
+const _ = require('lodash');
+const { makeExecutableSchema } = require('@graphql-tools/schema');
+const { constraintDirective } = require('graphql-constraint-directive');
 
 const express = require('express');
-const { ApolloServer, gql } = require('apollo-server');
+const { ApolloServer, gql } = require('apollo-server-express');
 
 const utf8 = require('utf8');
 
@@ -44,23 +46,14 @@ const reqContext = async ({ req }) => {
 
 let schema = makeExecutableSchema({ typeDefs, resolvers });
 
-schema = directives.reduce((curSchema, transformer) => transformer(curSchema), schema);
+schema = constraintDirective()(schema);
+
+schema = _.reduce(directives, (curSchema, transformer) => transformer(curSchema), schema);
 
 const server = new ApolloServer({
   schema,
   dataSources,
   context: reqContext,
-  plugins: [
-    {
-      requestDidStart() {
-        return {
-          willSendResponse({ context: newContext, response }) {
-            response.http.headers.append('audit', JSON.stringify(newContext.audit || {}));
-          },
-        };
-      },
-    },
-  ],
   formatError: error => {
     logger.error('error', error.stack || error.mesage || error);
     return error;
@@ -68,9 +61,11 @@ const server = new ApolloServer({
 });
 
 (async () => {
-  await connect();
+  await Promise.all([
+    connect(),
+    server.start(),
+  ]);
+  server.applyMiddleware({ app, path: '/' });
 })();
-
-server.applyMiddleware({ app, path: '/' });
 
 module.exports = app;
