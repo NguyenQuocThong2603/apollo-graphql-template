@@ -1,3 +1,3 @@
 input MyInput {
-  inputValue: String
+  inputValue: String @constraint(minLength: 1, maxLength: 255)
 }

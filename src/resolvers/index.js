@@ -1,7 +1,7 @@
 const custom = require('./custom');
 const enumResolvers = require('./enums');
-const queryResolver = require('./mutations');
-const myResolver = require('./myResolver');
+const queryResolver = require('./queries');
+const myType = require('./myType');
 const mutationResolver = require('./mutations');
 
 module.exports = {
@@ -9,5 +9,5 @@ module.exports = {
   Mutation: mutationResolver,
   ...enumResolvers,
   ...custom,
-  MyResolver: myResolver,
+  MyType: myType,
 };

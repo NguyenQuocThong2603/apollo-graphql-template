@@ -5,5 +5,5 @@ async function myQuery(_, args, context, info) {
 }
 
 module.exports = {
-  myQuery,
+  MyQuery: myQuery,
 };

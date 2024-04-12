@@ -10,7 +10,7 @@
     "coverage:m1": "MONGOMS_ARCH=x64 NODE_ENV=test jest --coverage --maxWorkers=50%",
     "start-local": "NODE_ENV=test PORT=4001 TOKEN_SECRET=secret REDIS_URL=localhost COMMON_DB_CONNECTION_STRING=mongodb://localhost/common_test DB_CONNECTION_STRING='mongodb://localhost/octomed-diseasemgmt_test' nodemon src",
     "start": "NODE_ENV=dev nodemon app",
-    "start-with-env-file": "export $(grep -v '^#' .env | xargs) && nodemon app"
+    "start-with-env-file": "export $(grep -v '^#' .env | xargs) && nodemon src"
   },
   "repository": {
     "type": "git",
@@ -24,17 +24,21 @@
   },
   "homepage": "https://github.com/NguyenQuocThong2603/apollo-graphql-template#readme",
   "dependencies": {
+    "@graphql-tools/schema": "^10.0.3",
     "@graphql-tools/utils": "^10.1.2",
+    "@grpc/grpc-js": "^1.10.6",
     "apollo-server": "^3.13.0",
     "apollo-server-express": "^3.13.0",
     "dataloader": "^2.2.2",
     "express": "^4.19.1",
     "graphql": "^16.8.1",
+    "graphql-constraint-directive": "^5.4.3",
     "graphql-fields": "^2.0.3",
     "graphql-fields-projection": "^1.1.0",
-    "graphql-tools": "^9.0.1",
+    "graphql-scalars": "^1.23.0",
     "lodash": "^4.17.21",
     "mongoose": "^8.2.3",
+    "ugrpc": "^1.5.1",
     "utf8": "^3.0.0",
     "winston": "^3.13.0"
   }
